@@ -1,0 +1,956 @@
+Prabhakarna Sripalawardhana Atapattu Jayasuriya Laxmansriramkrishna Shivavenkata Rajasekara Sriniwasana Trichipalli Yekya Parampeel Parambatur Chinnaswami Muthuswami Venugopal Iyer 
+
+//----------------------------------------------------------------------------------------------------------------------------------
+
+	// WAP to display the personal details 
+
+class PersonalDetails
+{
+	public static void main(String []args)
+	{
+		System.out.print("----------personal details----------");
+		System.out.print("Name : Nitin Rajaram vhankhande ");
+		System.out.print("Gender : male  Age : 23");
+		System.out.print("Adress : Samta Colony Kupwad");
+		System.out.print("Marks SSC : 78.20%  Diploma : 90.28%  B.tech : 60%");
+		System.out.print("what about you?");
+	}
+}
+
+-------->// Above program with escape sequence characters 
+
+class PersonalDetails
+{
+	public static void main(String []args)
+	{
+		System.out.print("\n----------personal details----------");
+		System.out.print("\nName : Nitin Rajaram vhankhande ");
+		System.out.print("\nGender : male \t Age : 23");
+		System.out.print("\nAdress : Samta Colony Kupwad");
+		System.out.print("\nMarks SSC : 78.20% \t Diploma : 90.28% \t B.tech : 60%");
+		System.out.print("\nwhat about you?");
+	}
+}
+
+///-------------------------------------------------------------------------------------------
+
+	Therre are two type conveerssion in java
+
+			-Widening or Automatic Type Conversion.
+			-Narrowing or Explicit Conversion.
+
+
+		-full explain link (https://www.naukri.com/code360/library/type-conversion-in-java)
+
+///---------------------------------------------------------------------------------------------------------
+
+class DemoDataType
+{
+	public static void main(String []args)
+	{
+		int x=34;
+		byte y=10;
+		char ch='$';
+		double db=56.2323;
+		float ft=3.4F;
+		boolean b=true;
+		
+		System.out.println("X="+x);
+		System.out.println("Y="+y);
+		System.out.println("Value of ch is "+ch);
+		System.out.println("double db= "+db);
+		System.out.println("Float Ft = "+ft);
+		System.out.println("Boolenan = "+b);
+		
+		System.out.println("intger = "+x +"\tByte = "+y +"\tChar ="+ch );
+	}
+}
+
+Here, "x=" + x + "\t y=" + y + "\t ch=" + ch will be evaluated as follows:
+
+"x=" + x results in "x=134".
+Then, "x=134" + "\t y=" adds a tab and "y=", creating "x=134 y=".
+Next, "x=134 y=" + y results in "x=134 y=10".
+This continues until all variables are concatenated, creating the full string output.
+
+//-------------------------------------------------------------------------------------------------------
+
+// Different ways of data input in Java
+
+	1. data input as a command line argument: 
+
+	class CmdLnInput1
+	{
+		public static void main(String []args)
+		{
+			System.out.println(args[0]);
+			System.out.println(args[1]);
+			System.out.println(args[2]);
+			System.out.println(args[3]);
+			System.out.println(args[4]);
+		}
+	}
+
+---------- Output -----------
+
+Y:\jsmall>javac CmdLnInput1.java
+
+Y:\jsmall>java CmdLnInput1 hello 45 G 450 hi
+hello
+45
+G
+450
+hi
+
+//-------------------------------------------------------------------------------------------
+
+class CmdLnInput2
+{
+	public static void main(String []args)
+	{		
+		System.out.println(args[0]+args[1]);
+	}
+}
+
+
+	----------- output -------------
+
+Y:\jsmall>javac CmdLnInput2.java
+
+Y:\jsmall>java CmdLnInput2 12 56
+1256
+
+
+///--------------------------------------------------------------------------------------------------
+
+	// WAP to find the simple interst. take  values of PA, ROI and NOY as a commandline argument.
+
+class DemoCmdlnSI
+{
+	public static void main(String []args)
+	{
+		int p=0,n=0;
+		double r=0.0,si=0.0;
+
+		p=Integer.parseInt(args[0]);
+		r=Double.parseDouble(args[1]);
+		n=Integer.parseInt(args[2]);
+
+		si=(p*r*n)/100;
+
+		System.out.println("Simple Interst: "+si);
+	}
+}
+
+	------ Output ---------
+Y:\jsmall>javac DemoCmdlnSI.java
+
+Y:\jsmall>java DemoCmdlnSI
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+        at DemoCmdlnSI.main(DemoCmdlnSI.java:8)
+
+Y:\jsmall>java DemoCmdlnSI 100 3.4 2
+Simple Interst: 6.8
+
+Y:\jsmall>
+///--------------------------
+This can be handled in proper way using the try-catch block as shown...!!
+
+class DemoCmdlnSI
+{
+	public static void main(String []args)
+	{
+		int p=0,n=0;
+		double r=0.0,si=0.0;
+
+		try
+		{
+			p=Integer.parseInt(args[0]);
+			r=Double.parseDouble(args[1]);
+			n=Integer.parseInt(args[2]);
+		}
+		catch(Exception e)
+		{
+			System.out.println("To calculate Simple Interst pass the values as a command line arguments ");
+		}
+		si=(p*r*n)/100;
+
+		System.out.println("Simple Interst: "+si);
+	}
+}
+
+
+	------ Output ------
+
+Y:\jsmall>javac DemoCmdlnSI.java
+
+Y:\jsmall>java DemoCmdlnSI
+To calculate Simple Interst pass the values as a command line arguments
+Simple Interst: 0.0
+
+Y:\jsmall>java DemoCmdlnSI 100 3.4 2
+Simple Interst: 6.8
+
+Y:\jsmall>
+///========================================================================================================
+
+	2. Taking input through Keyboard using java.io.InputStreamReader and java.io.BufferedReader
+
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+class IOUsingISRBR
+{
+	public static void main(String []args)
+	{
+		int x=0;
+		float y=0.0F;
+		double db=0.0;
+
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+		x=Integer.parseInt(br.readLine());
+		y=Float.parseFloat(br.readLine());
+		db=Double.parseDouble(br.readLine());	
+
+		System.out.println("\n x="+x+"\t y="+y+"\t db="+db);
+	}
+}
+//--------------->
+	When we try to execute the above program, we get  errors..!! to avoid error 
+		-There are two different options, to eliminate these errors
+//--------------->
+1. Handling the exception using try-catch
+
+
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+class IOUsingISRBR
+{
+	public static void main(String []args)
+	{
+		int x=0;
+		float y=0.0F;
+		double db=0.0;
+
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+		try
+		{
+			System.out.println("Enter 1 int, 1 float and 1 double Value: ");
+			x=Integer.parseInt(br.readLine());
+			y=Float.parseFloat(br.readLine());
+			db=Double.parseDouble(br.readLine());	
+		}
+		catch(Exception e){}
+		System.out.println("\n x="+x+"\t y="+y+"\t db="+db);
+	}
+}
+
+	---------- Output ------------
+
+Y:\jsmall>javac IOUsingISRBR.java
+
+Y:\jsmall>java IOUsingISRBR
+Enter 1 int, 1 float and 1 double Value:
+12
+4.5
+78.2156
+
+ x=12    y=4.5   db=78.2156
+
+Y:\jsmall>
+
+//-----------------------------------------------
+
+	2. Use throws clause to inform to caller of method
+
+
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+class IOUsingISRBR
+{
+	public static void main(String []args) throws Exception
+	{
+		int x=0;
+		float y=0.0F;
+		double db=0.0;
+
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+
+		System.out.println("Enter 1 int, 1 float and 1 double Value: ");
+		x=Integer.parseInt(br.readLine());
+		y=Float.parseFloat(br.readLine());
+		db=Double.parseDouble(br.readLine());	
+
+		System.out.println("\n x="+x+"\t y="+y+"\t db="+db);
+	}
+}
+
+	----------- output -----------
+
+Y:\jsmall>javac IOUsingISRBR.java
+
+Y:\jsmall>java IOUsingISRBR
+Enter 1 int, 1 float and 1 double Value:
+22
+67.435
+879.453523
+
+ x=22    y=67.435        db=879.453523
+
+Y:\jsmall>
+
+//-------------------------------------------------------------------------------------------------------
+
+// Enter any 3 digit number and display the addition of all 3 digits.
+
+
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class AddAllDigitNumber
+{
+	public static void main(String []args)
+	{
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br= new BufferedReader(isr);
+
+		int no=0;
+		
+		System.out.println("Enter any number : ");
+		
+		try{
+			no=Integer.parseInt(br.readLine());
+		}
+		catch (Exception e){}
+		
+		long add=0;
+
+		for(;no>0;no=no/10)
+		{
+			add=add+no%10;
+		}
+		System.out.println("Addition is "+add);
+	}
+}
+	
+//---------------------------------------------------------------------------------------------
+
+//WAp to enter any no check if it even or odd .if no is even then add 100 in it otherwise multiplyd by 10
+
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class EvenOddADD100
+{
+	public static void main(String []args)
+	{
+		 int no=0;
+	
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+
+		try
+		{
+			System.out.println("Enter any Number");
+			no=Integer.parseInt(br.readLine());
+
+			if(no%2==0)
+			{
+				System.out.println(no+"  is even  Number ");
+				System.out.println("so Add 100 = "+(no+100));
+			}
+			else
+			{
+				System.out.println(no+"  is odd  Number ");
+				System.out.println("so MUl. by 10 = "+(no*10));
+			}
+		}
+		catch(Exception e){}
+	}
+}
+
+///----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// WAP to enter any no check no is divisible  by 3 or 5 or divisible by both or not by both
+
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class DivNo3_5
+{
+	public static void main(String []args) throws Exception
+	{	
+		InputStreamReader obj =new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(obj);
+		int no=0;
+
+		System.out.println("Enter any Number : ");
+		no=Integer.parseInt(br.readLine());
+		
+		if(no%3==0 && no%5==0)
+		{
+			System.out.println(no+" Number Divided by 3 or 5 both Number");
+		}
+		else if(no%5==0)
+		{
+			System.out.println(no+" Number Divided  5 Number");
+		}
+		else 
+		{
+			System.out.println(no+" Number Divided  3 Number");
+		}	
+	}
+}
+
+
+//---------------------------------------------------------------------------------------------------------------
+
+    // WAP to convert the temp from F to Deg. formula[ (°F − 32) / 1.8 = °C]
+
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+class FereniteToDeg
+{
+	
+	public static void main(String args[]) throws Exception
+	{
+		InputStreamReader isr =new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+
+		float ferenite=0.0f,celcius=0.0f;
+
+		System.out.println("Enter the ferenite value ");
+		ferenite=Float.parseFloat(br.readLine());
+
+		celcius=(ferenite-32)/1.8f;
+		
+		System.out.println("Celcius : "+celcius);
+	}
+}
+
+	*note - insted using float use double coz double is by default floating value so 1.8 is double value you have to use by using float value  then use (1.8f) in forumula nither error is coming.
+
+
+///-------------------------------------------------------------------------------------------------------------------------
+
+
+// casting example(int--->float) 
+
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+class Typecast
+{
+	public static void main(String []args) throws Exception
+	{
+		InputStreamReader isr= new InputStreamReader(System.in);
+		BufferedReader br= new BufferedReader(isr);
+		int x=0,y=0;
+		float z=0.0f;
+		
+		System.out.println("Enter the vlaue of x and y : ");
+		
+		x=Integer.parseInt(br.readLine());
+		y=Integer.parseInt(br.readLine());
+		
+		z=(float)x/y;
+		System.out.println("Z="+z);
+
+	}
+}
+
+///------------------------------------------------------------------------------------------------------------------------------------
+
+
+    // Write as program to interchange the values of 2 variables
+
+
+class InterchangValue2Variable
+{
+	public static void main(String []args)
+ 	{
+		int A=0,B=0;
+
+		A=Integer.parseInt(args[0]);
+		B=Integer.parseInt(args[1]);
+
+		System.out.println("Before Interchang \n\t A="+A+"\tB="+B);
+		
+			A=A+B;
+			B=A-B;
+			A=A-B;
+		System.out.println("After Interchang \n\t A="+A+"\tB="+B);
+	}
+}
+
+
+///------------------------------------------------------------------------------------------------------------------------------------
+
+
+//WAp to enter any no check if it even or odd .if no is even then add 100 in it otherwise multiplyd by 10
+
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class EvenOddADD100
+{
+	public static void main(String []args)
+	{
+		 int no=0;
+	
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+
+		try
+		{
+			System.out.println("Enter any Number");
+			no=Integer.parseInt(br.readLine());
+
+			if(no%2==0)
+			{
+				System.out.println(no+"  is even  Number ");
+				System.out.println("so Add 100 = "+(no+100));
+			}
+			else
+			{
+				System.out.println(no+"  is odd  Number ");
+				System.out.println("so MUl. by 10 = "+(no*10));
+			}
+		}
+		catch(Exception e){}
+	}
+}
+
+
+///------------------------------------------------------------------------------------------------------------------------------------
+
+
+// WAP to enter any no check no is divisible  by 3 or 5 or divisible by both or not by both
+
+
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class DivNo3_5
+{
+	public static void main(String []args) throws Exception
+	{	
+		InputStreamReader obj =new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(obj);
+		int no=0;
+
+		System.out.println("Enter any Number : ");
+		no=Integer.parseInt(br.readLine());
+		
+		if(no%3==0 && no%5==0)
+		{
+			System.out.println(no+" Number Divided by 3 or 5 both Number");
+		}
+		else if(no%5==0)
+		{
+			System.out.println(no+" Number Divided  5 Number");
+		}
+		else 
+		{
+			System.out.println(no+" Number Divided  3 Number");
+		}	
+	}
+}
+
+//-------------------------------------------------------------------------------------------------------------------------------
+
+	// 4. Taking input through Keyboard using java.util.Scanner class
+
+import java.util.Scanner;
+class DemoScanner
+{
+	public static void main(String []args)
+	{
+		Scanner sc=new Scanner(System.in);
+		int x;
+		float y;
+		double db;
+		short s;
+
+		System.out.println("\n Enter the int value: ");
+		x=sc.nextInt();
+		System.out.println("\n Enter the float value: ");
+		y=sc.nextFloat();
+		System.out.println("\n Enter the double value: ");
+		db=sc.nextDouble();
+		System.out.println("\n Enter the short value: ");
+		s=sc.nextShort();
+		
+		System.out.println("\n int value: "+x);
+		System.out.println("\n float value: "+y);
+		System.out.println("\n double value: "+db);
+		System.out.println("\n short value: "+s);
+	}
+}
+
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+	// Reading character using BufferedReader-InputStreamReader or Scanner
+
+
+import java.io.*;
+class ReadCharBI
+{
+	public static void main(String []args)throws Exception 
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		char ch;
+		System.out.println("Enter any character");	
+		ch=br.readLine().charAt(0);
+		System.out.println("Character is : "+ch);
+	}
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------
+
+// Reading character using BufferedReader-InputStreamReader or Scanner
+
+import java.util.*;
+class ReadCharScanner
+{
+	public static void main(String []args)  //-----( throws Exception)
+	{
+		Scanner sc = new Scanner(System.in);						
+		char ch;
+		System.out.println("Enter any character Value: ");
+		ch=sc.nextLine().charAt(0);
+		System.out.println("character is: "+ch);
+	}
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------
+
+	// Input using GUI created by javax.swing.JOptionPane.showInputDialog()
+
+import javax.swing.JOptionPane;
+
+class InputUsingShowIpDialog
+{
+	public static void main(String []args)
+	{
+		int x=0;
+		double db=0.0;
+		
+		x=Integer.parseInt(JOptionPane.showInputDialog("Enter any int value");
+		db=Double.parseDouble(JOptionPane.showInputDialog("Enter any Double value");
+
+		System.out.println("Integer value : "+x);
+		System.out.println("Double Value : "+db);
+	}
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------
+
+    // WAP to enter price of 3 items and calc the discount. (discount is 7% when amount exceeds 500)by using GUI created by javax.swing.JOptionPane.showInputDialog()
+
+
+import javax.swing.JOptionPane;
+class Cal3ItomFindDiscout
+{
+	
+	public static void main(String args[])
+	{	
+		double i1=0.0,i2=0.0,i3=0.0,tot=0.0,dis=0.0;
+		System.out.println("Enter any three itom price ");
+
+		i1=Double.parseDouble(JOptionPane.showInputDialog("Enter  first itom price "));
+		i2=Double.parseDouble(JOptionPane.showInputDialog("Enter Second itom price "));
+		i3=Double.parseDouble(JOptionPane.showInputDialog("Enter Thired itom price "));
+		
+		tot=i1+i2+i3;
+		if(tot>=500)
+		{
+			dis=tot*0.07;
+		}
+		
+		System.out.println("Total Bill : "+tot);
+		if(tot>=500)
+		{
+			System.out.println("Discount : "+dis);
+		}
+		System.out.println("finel Bill : "+(tot-dis));
+	}
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------
+
+// Enter 3 nos and display the max from it. by using java.util.Scanner
+
+	
+import java.util.Scanner;
+class MaxFrom3Number
+{
+	public static void main(String []args)
+	{
+		Scanner sc =new Scanner(System.in);
+		int m1=0,m2=0,m3=0,max=0;
+		
+		System.out.println("Enter any Three Number : ");
+		m1=sc.nextInt();
+		m2=sc.nextInt();
+		m3=sc.nextInt();
+
+		max=(m1>m2)?(m1>m3)?m1:m3:(m2>m3)?m2:m3;
+
+		System.out.println("Maximum Number = "+max);
+	}
+
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------
+
+   // Enter any character and find it is ucase, lcase, digit or special symbol by using java.util.Scanner
+
+
+import java.util.Scanner;
+class FindUcaseLcaseDigitSSymbol
+{
+	public static void main(String []args)
+	{
+		Scanner sc = new Scanner(System.in);
+		char ch;
+		
+		System.out.println("Enter Any Value from Keyboard ");
+		ch=sc.nextLine().charAt(0);
+	
+		if(ch>=65 && ch<=90)
+			System.out.println(ch+" is Uppercase Character");
+		else if(ch>=97 && ch<=122)
+			System.out.println(ch+" is lowercase Character");
+		else if(ch>=48 && ch<=57)
+			System.out.println(ch+" is Digit");
+		else
+			System.out.println(ch+" Special Sysmobl");	
+	}
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------------------
+
+//Write a C program to enter marks of five subjects and calculate total, average and  percentage.
+
+
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class FiveSubCalTotPer
+{
+	public static void main(String []args)
+	{
+		InputStreamReader isr=new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+		Double s1=0.0,s2=0.0,s3=0.0,s4=0.0,s5=0.30,tot=0.0,per=0.0;
+	
+		System.out.println("Enter 5 subject marks ");
+		try {
+			s1=Double.parseDouble(br.readLine());
+			s2=Double.parseDouble(br.readLine());
+			s3=Double.parseDouble(br.readLine());
+			s4=Double.parseDouble(br.readLine());
+			s5=Double.parseDouble(br.readLine());
+
+		}
+		catch(Exception e){}
+
+		tot=s1+s2+s3+s4+s5;
+		per=(s1+s2+s3+s4+s5)/5;
+		System.out.println("Total : "+tot);
+		System.out.println("Percentage : "+per+"%");
+	}	
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------
+
+		//Write a C program to input week number and print week day.
+
+
+import java.util.Scanner;
+
+class InputWeekNoPrintDay
+{
+	public static void main(String []args)
+	{
+		int no=0;
+		
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("choose then number between 1-7 number");
+
+		no=sc.nextInt();
+
+		if(no==1)
+		    	System.out.println("Monday");
+		else if(no==2)
+		    	System.out.println("Tuesday");
+		else if(no==3)
+		    	System.out.println("wednesday");
+		else if(no==4)
+		    	System.out.println("thursday");
+		else if(no==5)
+		    	System.out.println("Friday");
+		else if(no==6)
+		    	System.out.println("Saturday");
+		else if(no==7)
+		    	System.out.println("Sunday");
+		else
+		    	System.out.println("Wrong Number !!!!!!!!!!!");
+
+	}
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------
+
+		
+// wap to enter second to keyboard and convert ionto hourse,minute,and second.
+
+
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+class ConvertTimeHrMinSec
+{
+	public static void main(String []args) throws Exception
+	{
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+
+		int sec=0,min=0,hr=0;
+
+		System.out.println("Enter the second count ");	
+		sec=Integer.parseInt(br.readLine());
+	
+		hr=sec/3600;
+		sec=sec%3600;
+		min=sec/60;
+		sec=sec%60;
+
+		System.out.println("Time : "+hr+"hr"+min+"min"+sec+"sec");
+	}
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------
+
+	Write a C program to print multiplication table of any number.
+
+import javax.swing.JOptionPane;
+class TableAnyNo
+{
+	public static void main(String []args)
+	{
+		int no=0;
+		no=Integer.parseInt(JOptionPane.showInputDialog("Enter any Number"));
+		
+		System.out.println(no+" Table \n");
+		for(int i=1;i<=10;i++)
+		{
+			System.out.println(i*no);
+		}
+	}
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------------------
+
+	//Write a C program to find the sum of all natural numbers between 1 to n.
+
+import javax.
+
+
+//----------------------------------------------------------------------------------------------------------------------------------
+
+	//- Unary Operators ( - ++ -- (type) )
+
+
+import java.util.Scanner;
+class DemoUnary
+{
+	public static void main(String []args)
+	{
+		Scanner sc = new Scanner(System.in);
+		int x=0,y=0,z=0;
+
+		System.out.println("Enter any number for x and y varaible : ");
+		x=sc.nextInt();
+		y=sc.nextInt();
+		z=x/y;
+		z=x/y;		
+		System.out.println("\n x="+x+"\t y="+y+"\t z="+z);
+
+		z=(double)x/y;		
+		System.out.println("\n x="+x+"\t y="+y+"\t z="+z);
+
+		z=x/(double)y;		
+		System.out.println("\n x="+x+"\t y="+y+"\t z="+z);
+
+		z=(double)x/(double)y;		
+		System.out.println("\n x="+x+"\t y="+y+"\t z="+z);
+
+	}
+		
+}
+
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+
+// using string as a case constant
+
+import javax.swing.JOptionPane;
+class StringConstant
+{
+	public static void main(String []args)
+	{
+		while(true)
+		{
+			String day=JOptionPane.showInputDialog("Enter name of any weekday and for stop enter exit ");
+			switch(day)
+			{
+				case "Monday":
+					System.out.println("Start of work week");
+					break;
+				case "Tuesday":
+				case "Wednesday":
+				case "Thursday":
+					System.out.println("Midweek");
+					break;
+				case "Friday":
+					System.out.println("End of work week");
+					break;
+				case "Saturday":
+				case "Sunday":
+					System.out.println("Weekend");
+					break;
+				case "exit":
+				case "Exit":
+				case "EXIT":
+					return;
+				default:
+					System.out.println("Invalid day of the week: "+day);
+
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
